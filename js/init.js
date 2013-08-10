@@ -1,3 +1,6 @@
+// List of modules to load
+var modules_list = ['todos'];
+
 // Create the Application object, Application.setView() will
 // place a view inside the {{layout-element}} in
 // templates/application.handlebars
@@ -16,20 +19,19 @@ Application.Collections = Thorax.Collections;
 Thorax.setRootObject(Application);
 
 $(function() {
-  // Application and other templates included by the base
-  // Application may want to use the link and url helpers
-  // which use hasPushstate, etc. so setup history, then
-  // render, then dispatch
-  Backbone.history.start({
-    pushState: false,
-    root: '/',
-    silent: true
-  });
-  // TODO: can remove after this is fixed:
-  // https://github.com/walmartlabs/lumbar/issues/84
-  Application.template = Thorax.templates.application;
-  Application.appendTo('body');
-  Backbone.history.loadUrl();
+  Application.loader.loadModule(modules_list, function(error){
+    // Application and other templates included by the base
+    // Application may want to use the link and url helpers
+    // which use hasPushstate, etc. so setup history, then
+    // render, then dispatch
+    Backbone.history.start({
+      pushState: false,
+      root: '/',
+      silent: true
+    });
+    Application.appendTo('body');
+    Backbone.history.loadUrl();
+  })
 });
 
 // This configures our Application object with values
