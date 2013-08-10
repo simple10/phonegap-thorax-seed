@@ -1,10 +1,12 @@
 module.exports = function(grunt) {
+  var rewriteRulesSnippet = require('grunt-connect-rewrite/lib/utils').rewriteRequest;
+
   var port = 8000,
       publicDir = './public',
       jsDir = publicDir + '/modules',
       lumbarFile = './lumbar.json',
       hostname = 'localhost';
-  
+
   grunt.file.mkdir(publicDir);
   grunt.file.mkdir(jsDir);
 
@@ -15,8 +17,17 @@ module.exports = function(grunt) {
         options: {
           hostname: hostname,
           base: publicDir,
-          port: port
+          port: port,
+          middleware: function (connect) {
+            return [
+              rewriteRulesSnippet, // RewriteRules support
+              connect.static(require('path').resolve(publicDir)) // mount filesystem
+            ];
+          }
         }
+      },
+      rules: {
+        '^/todos$': '/'
       }
     },
     lumbar: {
@@ -52,21 +63,23 @@ module.exports = function(grunt) {
       }
     }
   });
-  
+
   grunt.registerTask('open-browser', function() {
     var open = require('open');
     open('http://' + hostname + ':' + port);
   });
-  
+
   grunt.loadTasks('tasks');
   grunt.loadNpmTasks('thorax-inspector');
   grunt.loadNpmTasks('lumbar');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-connect-rewrite');
 
   grunt.registerTask('default', [
     'ensure-installed',
     'thorax:inspector',
     'lumbar:init',
+    'configureRewriteRules',
     'connect:server',
     'open-browser',
     'lumbar:watch'

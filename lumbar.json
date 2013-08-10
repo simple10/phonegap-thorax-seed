@@ -6,14 +6,38 @@
   "modules": {
     "base": {
       "scripts": [
-        {"src": "bower_components/underscore/underscore.js", "global": true},
-        {"src": "bower_components/jquery/jquery.js", "global": true},
-        {"src": "bower_components/backbone/backbone.js", "global": true},
-        {"src": "bower_components/lumbar-loader/lib/script.js", "global": true},
-        {"src": "bower_components/lumbar-loader/lib/queue.js", "global": true},
-        {"src": "bower_components/lumbar-loader/local-cache.js", "global": true},
-        {"src": "bower_components/handlebars/handlebars.js", "global": true},
-        {"src": "bower_components/bootstrap/js/bootstrap.js", "global": true},
+        {
+          "src": "bower_components/underscore/underscore.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/jquery/jquery.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/backbone/backbone.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/lumbar-loader/lib/script.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/lumbar-loader/lib/queue.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/lumbar-loader/local-cache.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/handlebars/handlebars.js",
+          "global": true
+        },
+        {
+          "src": "bower_components/bootstrap/js/bootstrap.js",
+          "global": true
+        },
         "bower_components/thorax/thorax.js",
         "bower_components/lumbar-loader/lumbar-loader.js",
         "bower_components/lumbar-loader/lumbar-loader-events.js",
@@ -23,7 +47,9 @@
         "js/model.js",
         "js/collection.js",
         "js/view.js",
-        {"module-map": true}
+        {
+          "module-map": true
+        }
       ],
       "styles": [
         "stylesheets/base.css",
