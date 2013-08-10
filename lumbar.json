@@ -29,6 +29,18 @@
         "stylesheets/base.css",
         "bower_components/bootstrap/css/bootstrap.css"
       ]
+    },
+    "todos": {
+      "routes": {
+        "todos": "index"
+      },
+      "scripts": [
+        "js/routers/todos.js",
+        "js/views/todos/index.js"
+      ],
+      "styles": [
+        "stylesheets/todos.css"
+      ]
     }
   },
   "templates": {
