@@ -25,7 +25,7 @@ $(function() {
     // which use hasPushstate, etc. so setup history, then
     // render, then dispatch
     Backbone.history.start({
-      pushState: false,
+      pushState: true,
       root: '/',
       silent: true
     });
